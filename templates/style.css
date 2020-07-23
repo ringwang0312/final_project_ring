@@ -1,0 +1,131 @@
+body {
+    background-color: black
+}
+
+h1 {
+     color: rgb(30, 215, 96);
+     background-color: white;
+     font-family: "Helvetica", "Arial", sans-serif;
+     font-weight: bold;
+}
+
+h3 {
+     color: rgb(30, 215, 96);
+     background-color: black;
+     font-family: "Helvetica", "Arial", sans-serif;
+     font-weight: bold;
+}
+
+img {
+    padding-top: 10px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+}
+
+p {
+   font-family: sans-serif;
+   color: white;
+   font-size: 14
+}
+
+table {
+        color: white;
+}
+
+form {
+      color: white;
+}
+
+.nav-background {
+                background-color: black;
+}
+.container {
+  background-color: black;
+}
+
+.navbar {
+         padding-left: 50px;
+}
+
+.navbar-brand {
+               background-color:  rgb(30, 215, 96);
+               font-family: "Helvetica", "Arial", sans-serif;
+               font-weight: bold;
+               font-size: x-large;
+               color: black;
+}
+.pull-right {
+  padding-right: 1in;
+}
+
+.pull-left {
+  padding-left: 1in;
+}
+/* Here we define a navbar style that will ONLY be applied at screen sizes below 480 pixels */
+@media (max-width: 480px) {
+  .navbar {
+    background-color:  rgb(30, 215, 96);
+}
+
+  .navbar-brand {
+                 background-color: black;
+                 font-family: "Arial", sans-serif;
+                 font-weight: bold;
+                 color:  rgb(30, 215, 96);
+}
+.navbar-collapse {
+                                  background-color: black;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  font: 16px Arial;  
+}
+.autocomplete {
+  /*the container must be positioned relative:*/
+  position: relative;
+  display: inline-block;
+}
+input {
+  border: 1px solid transparent;
+  background-color: #f1f1f1;
+  padding: 10px;
+  font-size: 16px;
+}
+input[type=text] {
+  background-color: #f1f1f1;
+  width: 100%;
+}
+input[type=submit] {
+  background-color: DodgerBlue;
+  color: #fff;
+  cursor: pointer;
+}
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff; 
+  border-bottom: 1px solid #d4d4d4; 
+}
+.autocomplete-items div:hover {
+  /*when hovering an item:*/
+  background-color: #e9e9e9; 
+}
+.autocomplete-active {
+  /*when navigating through the items using the arrow keys:*/
+  background-color: DodgerBlue !important; 
+  color: #ffffff; 
+}
