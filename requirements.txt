@@ -1,5 +1,0 @@
-gunicorn
-flask
-flask-cors
-flask-restful
-pymongo
