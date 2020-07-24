@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Data Process</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-default" style="background-color: black;">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header" >
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+        <a class="navbar-brand" href="index.html" style="color: white;">Data Process</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: white;">More<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="index.html">Homepage</a></li>
+          </ul>
+         </li>
+        </ul>
+      </div>
+    </nav>
+
+      <div class = "container">
+        <div class="row">
+
+        </div>
+
+        
+      </div>
+
+        <div class="container">
+          <section class = 'row'>
+            <div class="col-md-5"> <br>
+    
+              <div class="text-left">
+                <h1>K-means Clustering</h1>
+                <hr>
+                <p>Used for when you have data that is <strong style = 'color:greenyellow'>not yet categorized into groups. </strong><br>
+                  This package finds <strong style = 'color:greenyellow'>similar attributes within the data</strong> to group the values on. <br>
+                  The algorithm can be used for the following business cases:
+                  
+                  <li style = 'color:greenyellow'>Behavioral Segmentation</li>
+                  <li style = 'color:greenyellow'>Inventory Categorization</li>
+                  <li style = 'color:greenyellow'>Sensor Measurements</li>
+                  <li style = 'color:greenyellow'>Detecting bots or anomalies</li>
+                  </p> <br>
+
+                  <div class="container">
+                    <section class="row">
+                      <div class="col-md-5">
+                        <article class="description-content">
+                          <hr>
+                          <h2 class="description-header" style = 'color:rgb(26, 221, 0)'>How it's calculated</h2>
+                          <img src="Visualizations/step1.png.PNG" alt="" class="img-responsive"/>
+                          <p>Each centroid defines a cluster – a data point is assigned based on the squared Eucidean distance.</p>
+                          <br>
+                          <h3 style ='color:white'>Step Two</h3>
+                          <img src="Visualizations/step2.png.PNG" alt="" class="img-responsive"/>
+                          <p>Data sets are recomputed - taking the mean of each clusters data points.</p>
+                          <h4 style = 'color:lawngreen'>The follow sets keep iterating between the two formulas until there are no data points that shift to a different grouping.</h4>
+                        </article>
+                      </div>
+                    </section>
+                  </div>
+             </div>
+
+             <hr>
+             <div class="container">
+              <section class = 'row'>
+                <div class="col-md-5"> <br>
+
+                  <div class="text-left">
+                <h1>How music is analyzed</h1>
+                  <h2 style = 'color:greenyellow'>Mood Attributes</h2>
+                <li style = 'color:white'>Danceability: Danceability describes how suitable a track is for dancing based on a combination of musical elements including tempo, rhythm stability, beat strength, and overall regularity. A value of 0.0 is least danceable and 1.0 is most danceable.</li>
+                <li style = 'color:white'>Energy: Measure from 0.0 to 1.0 and represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy. For example, death metal has high energy, while a Bach prelude scores low on the scale. Perceptual features for energy include dynamic range, perceived loudness, timbre, onset rate, and general entropy.</li>
+                <li style = 'color:white'>Valence: A measure from 0.0 to 1.0 describing the musical positiveness conveyed by a track. Tracks with high valence sound more positive (e.g. happy, cheerful, euphoric), while tracks with low valence sound more negative (e.g. sad, depressed, angry).</li>
+                <li style = 'color:white'>Tempo: The overall estimated tempo of a track in beats per minute (BPM). In musical terminology, tempo is the speed or pace of a given piece and derives directly from the average beat duration.</li> 
+                <h2 style = 'color:greenyellow' >Properties</h2>
+                <li style = 'color:white'>Loudness: Loudness values are averaged across the entire track and are useful for comparing relative loudness of tracks. Loudness is the quality of a sound that is the primary psychological correlate of physical strength (amplitude). Values typical range between -60 and 0 db.</li>
+                <li style = 'color:white'> Speechiness: Detects the presence of spoken words in a track. The more exclusively speech-like the recording (e.g. talk show, audiobook, poetry), the closer to 1.0 the attribute value. Values above 0.66 describe tracks that are probably made entirely of spoken words. Values between 0.33 and 0.66 describe tracks that may contain both music and speech, either in sections or layered, including such cases as rap music.
+                <li style = 'color:white'>Instrumentalness: Predicts whether a track contains no vocals. “Ooh” and “aah” sounds are treated as instrumental in this context. Rap or spoken word tracks are clearly “vocal”. The closer the instrumentalness value is to 1.0, the greater likelihood the track contains no vocal content. Values above 0.5 are intended to represent instrumental tracks, but confidence is higher as the value approaches 1.0.</li>
+                <li style = 'color:white'>Mode: Indicates the modality (major or minor) of a track, the type of scale from which its melodic content is derived. Major is represented by 1 and minor is 0.</li>
+                <h2 style = 'color:greenyellow' >Context</h2>
+                <li style = 'color:white'>Acousticness: A confidence measure from 0.0 to 1.0 of whether the track is acoustic. 1.0 represents high confidence the track is acoustic.</li>
+                <li style = 'color:white'> Liveness: Detects the presence of an audience in the recording. Higher liveness values represent an increased probability that the track was performed live. A value above 0.8 provides a strong likelihood that the track is live.</li>
+                <hr>
+                <p>Sound attribute information was found at https://medium.com/swlh/build-spotify-playlist-using-machine-learning-45352975d2ee</p>
+              </article>
+            </div>
+          </section>
+        </div>
+   </div>
+
+            </div>
+    
+    </div>
+
+  </body>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  </html>
