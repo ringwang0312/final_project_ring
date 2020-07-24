@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <title>Mood & Music</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/static/css/style.css">
 </head>
 
 <body>
@@ -46,9 +46,8 @@
               <form>
                 <div class="form-group">
                   <label for="exampleFormControlSelect2">Select Your Mood:</label>
-                  <p id="result">Happy</p>
                   <select multiple class="form-control" id="exampleFormControlSelect2">
-                    <option id="0" selected>Happy</option>
+                    <option id="0">Happy</option>
                     <option id="1">Moody</option> 
                     <option id="2">Mellow</option>
                     <option id="3">Sad</option>
@@ -132,42 +131,102 @@
                       closeAllLists(e.target);
                       });
                 }
-                  var e = document.getElementById("exampleFormControlSelect2");
-                  var result = e.options[e.selectedIndex].value;
-                  alert(result);
 
-                  function GetSelectedValue(){
-                  var e = document.getElementById("exampleFormControlSelect2");
-                  var result = e.options[e.selectedIndex].value;
+                  function DropDown2(mood) {
+                      var pannel = d3.select("#dropdown")
 
-                  document.getElementById("result").innerHTML = result;
-                  console.log(result)
-                }
-                  function fetchSongs(song) {
-                    var songs = []
-                ​
-                //   fetch(`https://spotifymoods.herokuapp.com/searchbox/${result}/${myInput}`).then(data=>data.json()).then(d=>{
-                //   d.results.forEach(r=>{
-                    
+                      fetch(`https://spotifymoods.herokuapp.com/searchbox/${mood}/%20`).then(data=>data.json()).then(d=>{
+                        let songs = d.results;
+                        console.log(songs);
+                        console.log(songs.length);
+                      });
+                };
+                /*An array containing all the country names in the world:*/
+                // var songs = [
+                //    '????????'
+                // ];
 
-                //   // var songs = [
-                //   //   '????????'
-                //   // ];
-                  
-                // d3.select("#exampleFormControlSelect2").addEventListener("change", populateTable(this.value))
-                autocomplete(document.getElementById("myInput"), songs);
 
-                
+                /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+                autocomplete(document.getElementById("myInput"), DropDown2);
+
+            // function createSongList(songs) {
+            //   var e = document.getElementById("exampleFormControlSelect2");
+            //   var moodSelection = e.options[e.selectedIndex].id;
+            //                             fetch(`https://spotifymoodml.herokuapp.com/${moodSelection}/$li`).then(data=>data.json()).then(d=>{ d.results.forEach(r=>{
+            //                     const row = songs.append();
+            //                   });
+            //                 })
+            // };
                 </script>
             </div>
         </div>
 
         <div class="row">
+
+          <div class="col-md-6 pad top"> <br>
+            <h3>We've Analyzed Your Mood</h3> <br>
+          </div>
+          <div class="col-md-6 pad top"> <br>
+            <h3>Here's Top 10 Songs that match your mood</h3> <br>
+          </div>
+  
+      </div>
+
+        <div class="row">
     
             <div class="col-md-6 pad top"> <br>
+    
+                <div class="pull-left">
+                <img src="Visualization of user's mood?" alt="user's mood" width="400" height=auto>
+              </div>
+    
+              <div class="text-left">
+                <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                  when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+                  It has survived not only five centuries, but also the leap into electronic typesetting, 
+                  remaining essentially unchanged. It was popularised in the 1960s with the release of 
+                  Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software 
+                  like Aldus PageMaker including versions of Lorem Ipsum.</p> <br>
+              </div>
+              <div class="col-md-6 pad top"> <br>
+                <!-- <div class="pull-right"> -->
+                  <table style="width:100%">
+                    <tr>
+                      <th>Rank</th>
+                      <th>Song Name</th> 
+                      <th>Limk</th>
+                    </tr>
+                    <tr>
+                      <td>1</td>
+                      <td>Rockstar</td>
+                      <td>Spotify link 1</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Bliding Lights</td>
+                      <td>Spotify link 2</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>What's Poppin</td>
+                      <td>Spotify Link 3</td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td>Savage</td>
+                      <td>Spotify Link 4</td>
+                    </tr>
+                    <tr>
+                      <td>5</td>
+                      <td>Roses</td>
+                      <td>Spotify Link 5</td>
+                    </tr>
+                  </table>
+                  </div>
                 <br>
                 <hr>
-                <h3>We've Analyzed Your Mood</h3> <br>
               <script type='text/javascript' src='https://us-west-2b.online.tableau.com/javascripts/api/viz_v1.js'></script>
               <div class='tableauPlaceholder' style='width: 1000px; height: 827px;'>
                 <object class='tableauViz' width='1000' height='827' style='display:none;'>
@@ -192,6 +251,6 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src=“https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.min.js”></script>
-  <script src=“app.js”></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.min.js"></script>
+  <script src="/static/js/app.js"></script>
   </html>
