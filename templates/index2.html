@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Mood & Music</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-default" style="background-color: black;">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header" >
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+        <a class="navbar-brand" href="index.html" style="color: white;">Mood & Music</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: white;">More<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="data.html">Visualizations</a></li>
+          </ul>
+         </li>
+        </ul>
+      </div>
+    </nav>
+
+      <div class = "container">
+        <div class="row">
+
+            <div class="col-md-12 pad top"> <br>
+              <h3>How Are You Feeling?</h3> <br>
+            </div>
+            <br>
+            <div class="col-md-12 pad top"> <br>
+              <form>
+                <div class="form-group">
+                  <label for="exampleFormControlSelect2">Select Your Mood:</label>
+                  <p id="result"></p>
+                  <select multiple class="form-control" id="exampleFormControlSelect2">
+                    <option id="0" selected>Happy</option>
+                    <option id="1">Moody</option> 
+                    <option id="2">Mellow</option>
+                    <option id="3">Sad</option>
+                    <option id="4">Chill</option>
+                  </select>
+                </div>
+              </form>
+              <label for="exampleFormControlSelect2" style="color:white;"> Which Song Would You Like to Listen to Now?</label>
+              <form autocomplete="off" action="/action_page.php">
+                <div class="autocomplete" style="width:300px;">
+                  <input id="myInput" type="text" name="myCountry" placeholder=" ex) WHATS POPPIN " style="color:black;">
+                </div>
+              </br>
+                <input type="submit" style="color:rgb(20, 87, 43);font-weight: bold;">
+              </form>
+
+
+              <script>
+                function autocomplete(inp, arr) {
+                  var currentFocus;
+                  inp.addEventListener("input", function(e) {
+                      var a, b, i, val = this.value;
+                      closeAllLists();
+                      if (!val) { return false;}
+                      currentFocus = -1;
+                      a = document.createElement("DIV");
+                      a.setAttribute("id", this.id + "autocomplete-list");
+                      a.setAttribute("class", "autocomplete-items");
+                      this.parentNode.appendChild(a);
+                      for (i = 0; i < arr.length; i++) {
+                        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                          b = document.createElement("DIV");
+                          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                          b.innerHTML += arr[i].substr(val.length);
+                          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                          b.addEventListener("click", function(e) {
+                              inp.value = this.getElementsByTagName("input")[0].value;
+                              closeAllLists();
+                          });
+                          a.appendChild(b);
+                        }
+                      }
+                  });
+                  inp.addEventListener("keydown", function(e) {
+                      var x = document.getElementById(this.id + "autocomplete-list");
+                      if (x) x = x.getElementsByTagName("div");
+                      if (e.keyCode == 40) {
+                        currentFocus++;
+                        addActive(x);
+                      } else if (e.keyCode == 38) {
+                        currentFocus--;
+                        addActive(x);
+                      } else if (e.keyCode == 13) {
+                        e.preventDefault();
+                        if (currentFocus > -1) {
+                          if (x) x[currentFocus].click();
+                        }
+                      }
+                  });
+                  function addActive(x) {
+                    if (!x) return false;
+                    removeActive(x);
+                    if (currentFocus >= x.length) currentFocus = 0;
+                    if (currentFocus < 0) currentFocus = (x.length - 1);
+                    x[currentFocus].classList.add("autocomplete-active");
+                  }
+                  function removeActive(x) {
+                    for (var i = 0; i < x.length; i++) {
+                      x[i].classList.remove("autocomplete-active");
+                    }
+                  }
+                  function closeAllLists(elmnt) {
+                    var x = document.getElementsByClassName("autocomplete-items");
+                    for (var i = 0; i < x.length; i++) {
+                      if (elmnt != x[i] && elmnt != inp) {
+                        x[i].parentNode.removeChild(x[i]);
+                      }
+                    }
+                  }
+                  document.addEventListener("click", function (e) {
+                      closeAllLists(e.target);
+                      });
+                }
+                // <TESING 1>
+                  let mood = 0;
+
+                  fetch(`https://spotifymoods.herokuapp.com/searchbox/${mood}/%20`).then(data=>data.json()).then(d=>{
+                      let songs = d.results;
+                      autocomplete(document.getElementById("myInput"), songs);
+                      // console.log(songs);
+                      // console.log(songs.length);
+                  });
+
+                // <TESING 2>
+                  var e = document.getElementById("exampleFormControlSelect2");
+                  var result = e.options[e.selectedIndex].value;
+
+                  function GetSelectedValue(){
+                  var e = document.getElementById("exampleFormControlSelect2");
+                  var result = e.options[e.selectedIndex].value;
+                  console.log(result);
+                  };
+                //   document.getElementById("result").innerHTML = result;
+                //   console.log(result)
+                // }
+                //   function fetchSongs(song) {
+                //     var songs = []
+                // ​
+                //   fetch(`https://spotifymoods.herokuapp.com/searchbox/${result}/${myInput}`).then(data=>data.json()).then(d=>{
+                //   d.results.forEach(r=>{
+                    
+                // // <PLACEMENT>
+                //   var songs = [
+                //     '????????'
+                //   ];
+                  
+                // d3.select("#exampleFormControlSelect2").addEventListener("change", populateTable(this.value))
+                // autocomplete(document.getElementById("myInput"), songs);
+
+                
+                </script>
+            </div>
+        </div>
+
+        <div class="row">
+    
+            <div class="col-md-6 pad top"> <br>
+                <br>
+                <hr>
+                <h3>We've Analyzed Your Mood</h3> <br>
+              <script type='text/javascript' src='https://us-west-2b.online.tableau.com/javascripts/api/viz_v1.js'></script>
+              <div class='tableauPlaceholder' style='width: 1000px; height: 827px;'>
+                <object class='tableauViz' width='1000' height='827' style='display:none;'>
+                  <param name='host_url' value='https%3A%2F%2Fus-west-2b.online.tableau.com%2F' /> 
+                  <param name='embed_code_version' value='3' /> 
+                  <param name='site_root' value='&#47;t&#47;spotifymusicanalysis' />
+                  <param name='name' value='SpotifyDataAnalysis&#47;Dashboard1' />
+                  <param name='tabs' value='no' />
+                  <param name='toolbar' value='yes' />
+                  <param name='showAppBanner' value='false' />
+                </object>
+              </div>
+    
+              </div>
+  
+    
+        </div>
+    
+    </div>
+
+  </body>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.min.js"></script>
+  // <script src="/static/js/app.js"></script>
+
+  </html>
