@@ -131,37 +131,41 @@
                       closeAllLists(e.target);
                       });
                 }
-                  let mood = 0;
+                  // <TESING 1>
+                    let mood = 0;
 
                   fetch(`https://spotifymoods.herokuapp.com/searchbox/${mood}/%20`).then(data=>data.json()).then(d=>{
                       let songs = d.results;
-                      console.log(songs);
-                      console.log(songs.length);
+                      autocomplete(document.getElementById("myInput"), songs);
+                      // console.log(songs);
+                      // console.log(songs.length);
+                  });
 
-                //   var e = document.getElementById("exampleFormControlSelect2");
-                //   var result = e.options[e.selectedIndex].value;
-                //   alert(result);
+                  // <TESING 2>
+                  var e = document.getElementById("exampleFormControlSelect2");
+                  var result = e.options[e.selectedIndex].value;
 
-                //   function GetSelectedValue(){
-                //   var e = document.getElementById("exampleFormControlSelect2");
-                //   var result = e.options[e.selectedIndex].value;
-
-                //   document.getElementById("result").innerHTML = result;
-                //   console.log(result)
-                // }
-                //   function fetchSongs(song) {
-                //     var songs = []
-                // ​
-                //   fetch(`https://spotifymoods.herokuapp.com/searchbox/${result}/${myInput}`).then(data=>data.json()).then(d=>{
-                //   d.results.forEach(r=>{
+                  function GetSelectedValue(){
+                  var e = document.getElementById("exampleFormControlSelect2");
+                  var result = e.options[e.selectedIndex].value;
+                  console.log(result);
+                  };
+                  //   document.getElementById("result").innerHTML = result;
+                  //   console.log(result)
+                  // }
+                  //   function fetchSongs(song) {
+                  //     var songs = []
+                  // ​
+                  //   fetch(`https://spotifymoods.herokuapp.com/searchbox/${result}/${myInput}`).then(data=>data.json()).then(d=>{
+                  //   d.results.forEach(r=>{
                     
+                  // // <PLACEMENT>
+                  //   var songs = [
+                  //     '????????'
+                  //   ];
 
-                //   // var songs = [
-                //   //   '????????'
-                //   // ];
-                  
-                // d3.select("#exampleFormControlSelect2").addEventListener("change", populateTable(this.value))
-                autocomplete(document.getElementById("myInput"), songs);
+                  // d3.select("#exampleFormControlSelect2").addEventListener("change", populateTable(this.value))
+                  // autocomplete(document.getElementById("myInput"), songs);
 
                 
                 </script>
