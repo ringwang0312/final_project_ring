@@ -141,19 +141,20 @@
                   var result = e.options[e.selectedIndex].value;
 
                   document.getElementById("result").innerHTML = result;
+                  console.log(result)
                 }
                   function fetchSongs(song) {
                     var songs = []
                 ​
-                  fetch(`https://spotifymoods.herokuapp.com/searchbox/${result}/${myInput}`).then(data=>data.json()).then(d=>{
-                  d.results.forEach(r=>{
+                //   fetch(`https://spotifymoods.herokuapp.com/searchbox/${result}/${myInput}`).then(data=>data.json()).then(d=>{
+                //   d.results.forEach(r=>{
                     
 
-                  // var songs = [
-                  //   '????????'
-                  // ];
+                //   // var songs = [
+                //   //   '????????'
+                //   // ];
                   
-                d3.select("#exampleFormControlSelect2").addEventListener("change", populateTable(this.value))
+                // d3.select("#exampleFormControlSelect2").addEventListener("change", populateTable(this.value))
                 autocomplete(document.getElementById("myInput"), songs);
 
                 
