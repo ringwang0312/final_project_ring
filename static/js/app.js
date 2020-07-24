@@ -6,18 +6,18 @@
       var pannel = d3.select("#exampleFormControlSelect2")
 
       fetch(`https://spotifymoods.herokuapp.com/mood/${mood}`).then(data=>data.json()).then(d=>{
-          console.log(data)
+          console.log(d)
           d.results.forEach(r=>{
           o = document.createElement("option")
           o.text = r
           pannel.add(o)
-})
+    })
 
     function populateTable(song) {
     var pannel = d3.select("#myInput")
   ​
     fetch(`https://spotifymoods.herokuapp.com/similar/${song}`).then(data=>data.json()).then(d=>{
-        console.log(data)
+        console.log(d)
         d.results.forEach(r=>{
         const row = pannel.append("tr");
 
