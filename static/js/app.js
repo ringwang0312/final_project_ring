@@ -5,7 +5,7 @@
     function DropDown(mood) {
       var pannel = d3.select("#exampleFormControlSelect2")
 
-      fetch(`https://spotifymoodml.herokuapp.com/mood/${mood}`).then(data=>data.json()).then(d=>{
+      fetch(`https://spotifymoods.herokuapp.com/mood/${mood}`).then(data=>data.json()).then(d=>{
           console.log(data)
           d.results.forEach(r=>{
           o = document.createElement("option")
@@ -16,7 +16,7 @@
     function populateTable(song) {
     var pannel = d3.select("#myInput")
   ​
-    fetch(`https://spotifymoodml.herokuapp.com/similar/${song}`).then(data=>data.json()).then(d=>{
+    fetch(`https://spotifymoods.herokuapp.com/similar/${song}`).then(data=>data.json()).then(d=>{
         console.log(data)
         d.results.forEach(r=>{
         const row = pannel.append("tr");
@@ -48,7 +48,7 @@
 //  });
 // };
 
-// d3.json(`https://spotifymoodml.herokuapp.com/similar/${song}`).then((data) => {
+// d3.json(`https://spotifymoods.herokuapp.com/similar/${song}`).then((data) => {
 // console.log(data);
 // populateTable(data)
 // });
@@ -59,7 +59,7 @@
 
 //   d3.select("#exampleFormControlSelect2").addEventListener("change", populateTable(this.val))
 
-//   fetch(`https://spotifymoodml.herokuapp.com/similar/${song}`).then(data=>data.json()).then(d=>{
+//   fetch(`https://spotifymoods.herokuapp.com/similar/${song}`).then(data=>data.json()).then(d=>{
 //         console.log(data);
 
 // });  
