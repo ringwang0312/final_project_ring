@@ -1,5 +1,8 @@
 
-    // making table from mood + song data 
+   var myArr = ["Orange", "Banana", "Mango", "Kiwi" ];
+   console.log(myArr);
+   
+   // making table from mood + song data 
     d3.select("#exampleFormControlSelect2").addEventListener("change", populateTable(this.val))
     
     function DropDown(mood) {
@@ -14,10 +17,10 @@
     })
 
     function populateTable(song) {
-    var pannel = d3.select("#pressSubmit")
+    var pannel = d3.select("#table1")
   ​
     fetch(`https://spotifymoods.herokuapp.com/similar/${song}`).then(data=>data.json()).then(d=>{
-        console.log(d)
+        console.log(song)
         d.results.forEach(r=>{
         const row = pannel.append("tr");
 
