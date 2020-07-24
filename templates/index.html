@@ -62,7 +62,7 @@
                   <input id="myInput" type="text" name="myCountry" placeholder=" ex) WHATS POPPIN " style="color:black;">
                 </div>
               </br>
-                <input type="submit" style="color:rgb(20, 87, 43);font-weight: bold;">
+                <input id="pressSubmit" type="submit" style="color:rgb(20, 87, 43);font-weight: bold;">
               </form>
 
 
@@ -175,6 +175,13 @@
                 <br>
                 <hr>
                 <h3>We've Analyzed Your Mood</h3> <br>
+                <table style="width:100%" id="table1">
+                  <tr>
+                    <th>Mood</th>
+                    <th>Song Name</th> 
+                    <th>Cluster</th>
+                  </tr>
+                 </table>   
               <script type='text/javascript' src='https://us-west-2b.online.tableau.com/javascripts/api/viz_v1.js'></script>
               <div class='tableauPlaceholder' style='width: 1000px; height: 827px;'>
                 <object class='tableauViz' width='1000' height='827' style='display:none;'>
@@ -190,7 +197,6 @@
     
               </div>
   
-    
         </div>
     
     </div>
@@ -202,4 +208,5 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.min.js"></script>
   <script src="/static/js/app.js"></script>
 
-  </html>
+</html>
+
