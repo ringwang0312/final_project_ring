@@ -6,7 +6,7 @@
     d3.select("#exampleFormControlSelect2").addEventListener("change", populateTable(this.val))
     
     function DropDown(mood) {
-      var pannel = d3.select("#exampleFormControlSelect2")
+      var pannel = d3.select("#exampleFormControlSelect2");
 
       fetch(`https://spotifymoods.herokuapp.com/mood/${mood}`).then(data=>data.json()).then(d=>{
           console.log(d)
@@ -17,7 +17,7 @@
     })
 
     function populateTable(song) {
-    var pannel = d3.select("#table1")
+    var pannel = d3.select("#table1");
   ​
     fetch(`https://spotifymoods.herokuapp.com/similar/${song}`).then(data=>data.json()).then(d=>{
         console.log(song)
@@ -26,11 +26,11 @@
 
         // Loop through each field in the dataRow and add
         // each value as a table cell (td)
-        // Object.values(r).forEach((val) => {
-         //  let cell = row.append("td");
-          //   cell.text(val);
-         //  }
-        // );
+        Object.values(r).forEach((val) => {
+          let cell = row.append("td");
+            cell.text(val);
+          }
+        );
       });
     })
     }
