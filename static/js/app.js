@@ -8,7 +8,7 @@
     // mood = []
     // cluster_name = []
   ​
-    fetch(`https://spotifymoodml.herokuapp.com/similar/${song}`).then(data=>data.json()).then(d=>{
+    fetch(`https://spotifymoods.herokuapp.com/similar/${song}`).then(data=>data.json()).then(d=>{
     d.results.forEach(r=>{
         const row = pannel.append("tr");
 
@@ -26,7 +26,7 @@
     function DropDown(mood) {
         var pannel = d3.select("#dropdown")
 
-        fetch(`https://spotifymoodml.herokuapp.com/mood/${mood}`).then(data=>data.json()).then(d=>{
+        fetch(`https://spotifymoods.herokuapp.com/mood/${mood}`).then(data=>data.json()).then(d=>{
             d.results.forEach(r=>{
             o = document.createElement("option")
             o.text = r
