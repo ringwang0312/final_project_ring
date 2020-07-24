@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <title>Mood & Music</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/static/css/style.css">
 </head>
 
 <body>
@@ -55,6 +55,89 @@
                   </select>
                 </div>
               </form>
+              <label for="exampleFormControlSelect2" style="color:white;"> Which Song Would You Like to Listen to Now?</label>
+              <form autocomplete="off" action="/action_page.php">
+                <div class="autocomplete" style="width:300px;">
+                  <input id="myInput" type="text" name="myCountry" placeholder=" ex) WHATS POPPIN " style="color:black;">
+                </div>
+              </br>
+                <input type="submit" style="color:rgb(20, 87, 43);font-weight: bold;">
+              </form>
+              <script>
+                function autocomplete(inp, arr) {
+                  var currentFocus;
+                  inp.addEventListener("input", function(e) {
+                      var a, b, i, val = this.value;
+                      closeAllLists();
+                      if (!val) { return false;}
+                      currentFocus = -1;
+                      a = document.createElement("DIV");
+                      a.setAttribute("id", this.id + "autocomplete-list");
+                      a.setAttribute("class", "autocomplete-items");
+                      this.parentNode.appendChild(a);
+                      for (i = 0; i < arr.length; i++) {
+                        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                          b = document.createElement("DIV");
+                          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                          b.innerHTML += arr[i].substr(val.length);
+                          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                          b.addEventListener("click", function(e) {
+                              inp.value = this.getElementsByTagName("input")[0].value;
+                              closeAllLists();
+                          });
+                          a.appendChild(b);
+                        }
+                      }
+                  });
+                  inp.addEventListener("keydown", function(e) {
+                      var x = document.getElementById(this.id + "autocomplete-list");
+                      if (x) x = x.getElementsByTagName("div");
+                      if (e.keyCode == 40) {
+                        currentFocus++;
+                        addActive(x);
+                      } else if (e.keyCode == 38) {
+                        currentFocus--;
+                        addActive(x);
+                      } else if (e.keyCode == 13) {
+                        e.preventDefault();
+                        if (currentFocus > -1) {
+                          if (x) x[currentFocus].click();
+                        }
+                      }
+                  });
+                  function addActive(x) {
+                    if (!x) return false;
+                    removeActive(x);
+                    if (currentFocus >= x.length) currentFocus = 0;
+                    if (currentFocus < 0) currentFocus = (x.length - 1);
+                    x[currentFocus].classList.add("autocomplete-active");
+                  }
+                  function removeActive(x) {
+                    for (var i = 0; i < x.length; i++) {
+                      x[i].classList.remove("autocomplete-active");
+                    }
+                  }
+                  function closeAllLists(elmnt) {
+                    var x = document.getElementsByClassName("autocomplete-items");
+                    for (var i = 0; i < x.length; i++) {
+                      if (elmnt != x[i] && elmnt != inp) {
+                        x[i].parentNode.removeChild(x[i]);
+                      }
+                    }
+                  }
+                  document.addEventListener("click", function (e) {
+                      closeAllLists(e.target);
+                      });
+                }
+                
+                /*An array containing all the country names in the world:*/
+                var songs = [
+                  "????"
+                ];
+                
+                /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+                autocomplete(document.getElementById("myInput"), songs);
+                </script>
             </div>
         </div>
 
@@ -93,54 +176,55 @@
                   Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software 
                   like Aldus PageMaker including versions of Lorem Ipsum.</p> 
               </div>
-    
+              <div class="col-md-6 pad top"> <br>
+                <!-- <div class="pull-right"> -->
+                  <table style="width:100%">
+                    <tr>
+                      <th>Rank</th>
+                      <th>Song Name</th> 
+                      <th>Limk</th>
+                    </tr>
+                    <tr>
+                      <td>1</td>
+                      <td>Rockstar</td>
+                      <td>Spotify link 1</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Bliding Lights</td>
+                      <td>Spotify link 2</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>What's Poppin</td>
+                      <td>Spotify Link 3</td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td>Savage</td>
+                      <td>Spotify Link 4</td>
+                    </tr>
+                    <tr>
+                      <td>5</td>
+                      <td>Roses</td>
+                      <td>Spotify Link 5</td>
+                    </tr>
+                  </table>
+                  </div>
+                <br>
+                <hr>
               <script type='text/javascript' src='https://us-west-2b.online.tableau.com/javascripts/api/viz_v1.js'></script>
-              <div class='tableauPlaceholder' style='width: 800px; height: 600px;'>
-                <object class='tableauViz' width='800' height='600' style='display:none;'>
+              <div class='tableauPlaceholder' style='width: 1000px; height: 827px;'>
+                <object class='tableauViz' width='1000' height='827' style='display:none;'>
                   <param name='host_url' value='https%3A%2F%2Fus-west-2b.online.tableau.com%2F' /> 
                   <param name='embed_code_version' value='3' /> 
                   <param name='site_root' value='&#47;t&#47;spotifymusicanalysis' />
-                  <param name='name' value='ValenceData&#47;ValenceData' />
+                  <param name='name' value='SpotifyDataAnalysis&#47;Dashboard1' />
                   <param name='tabs' value='no' />
                   <param name='toolbar' value='yes' />
-                  <param name='showAppBanner' value='false' /></object></div>
-            </div>
-    
-            <div class="col-md-6 pad top"> <br>
-              <!-- <div class="pull-right"> -->
-                <table style="width:100%" id="table1">
-                  <tr>
-                    <th>Rank</th>
-                    <th>Song Name</th> 
-                    <th>Limk</th>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Rockstar</td>
-                    <td>Spotify link 1</td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Bliding Lights</td>
-                    <td>Spotify link 2</td>
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>What's Poppin</td>
-                    <td>Spotify Link 3</td>
-                  </tr>
-                  <tr>
-                    <td>4</td>
-                    <td>Savage</td>
-                    <td>Spotify Link 4</td>
-                  </tr>
-                  <tr>
-                    <td>5</td>
-                    <td>Roses</td>
-                    <td>Spotify Link 5</td>
-                  </tr>
-                </table>
-                </div>
+                  <param name='showAppBanner' value='false' />
+                </object>
+              </div>
     
               </div>
   
@@ -153,7 +237,6 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.min.js"></script>
-  <script src="app.js"></script>
-
+  <script type="text/javascript" src="/static/js/app.js"></script>
+  
   </html>
