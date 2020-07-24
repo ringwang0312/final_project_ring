@@ -47,11 +47,11 @@
                 <div class="form-group">
                   <label for="exampleFormControlSelect2">Select Your Mood:</label>
                   <select multiple class="form-control" id="exampleFormControlSelect2">
-                    <option>Happy</option>
-                    <option>Sad</option>
-                    <option>Angry</option>
-                    <option>Chill</option>
-                    <option>Badass</option>
+                    <option id="0">Happy</option>
+                    <option id="1">Moody</option> 
+                    <option id="2">Mellow</option>
+                    <option id="3">Sad</option>
+                    <option id="4">Chill</option>
                   </select>
                 </div>
               </form>
@@ -63,6 +63,8 @@
               </br>
                 <input type="submit" style="color:rgb(20, 87, 43);font-weight: bold;">
               </form>
+
+
               <script>
                 function autocomplete(inp, arr) {
                   var currentFocus;
@@ -129,14 +131,33 @@
                       closeAllLists(e.target);
                       });
                 }
-                
+
+                  function DropDown2(mood) {
+                      var pannel = d3.select("#dropdown")
+
+                      fetch(`https://spotifymoods.herokuapp.com/searchbox/${mood}/%20`).then(data=>data.json()).then(d=>{
+                        let songs = d.results;
+                        console.log(songs);
+                        console.log(songs.length);
+                      });
+                };
                 /*An array containing all the country names in the world:*/
-                var songs = [
-                  "????"
-                ];
-                
+                // var songs = [
+                //    '????????'
+                // ];
+
+
                 /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
-                autocomplete(document.getElementById("myInput"), songs);
+                autocomplete(document.getElementById("myInput"), DropDown2);
+
+            // function createSongList(songs) {
+            //   var e = document.getElementById("exampleFormControlSelect2");
+            //   var moodSelection = e.options[e.selectedIndex].id;
+            //                             fetch(`https://spotifymoodml.herokuapp.com/${moodSelection}/$li`).then(data=>data.json()).then(d=>{ d.results.forEach(r=>{
+            //                     const row = songs.append();
+            //                   });
+            //                 })
+            // };
                 </script>
             </div>
         </div>
@@ -168,13 +189,6 @@
                   remaining essentially unchanged. It was popularised in the 1960s with the release of 
                   Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software 
                   like Aldus PageMaker including versions of Lorem Ipsum.</p> <br>
-                <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                  when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-                  It has survived not only five centuries, but also the leap into electronic typesetting, 
-                  remaining essentially unchanged. It was popularised in the 1960s with the release of 
-                  Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software 
-                  like Aldus PageMaker including versions of Lorem Ipsum.</p> 
               </div>
               <div class="col-md-6 pad top"> <br>
                 <!-- <div class="pull-right"> -->
@@ -237,5 +251,5 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+  <!-- <script src="app2.js"></script> -->
   </html>
