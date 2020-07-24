@@ -14,7 +14,7 @@
     })
 
     function populateTable(song) {
-    var pannel = d3.select("#myInput")
+    var pannel = d3.select("#pressSubmit")
   ​
     fetch(`https://spotifymoods.herokuapp.com/similar/${song}`).then(data=>data.json()).then(d=>{
         console.log(d)
@@ -23,11 +23,11 @@
 
         // Loop through each field in the dataRow and add
         // each value as a table cell (td)
-        Object.values(r).forEach((val) => {
-          let cell = row.append("td");
-            cell.text(val);
-          }
-        );
+        // Object.values(r).forEach((val) => {
+         //  let cell = row.append("td");
+          //   cell.text(val);
+         //  }
+        // );
       });
     })
     }
