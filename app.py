@@ -27,9 +27,9 @@ def index():
 def data():
     return render_template('/data.html')
 
-@app.route('/tableau')
-def data():
-    return render_template('/tableau.html')
+# @app.route('/tableau')
+# def data():
+#     return render_template('/tableau.html')
 
 # @app.route('/songs/<title>')
 # def songs(title):
