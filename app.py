@@ -52,11 +52,12 @@ def searchbox(cluster,song):
 @app.route('/similar/<title>')
 def similarsongs(title):
 
-        record = db.final.song_clusters.find({"track_name":{'$regex':title}})
+        record = db.final.new_cluster.find({"track_name":{'$regex':title}})
         cluster=[r["cluster"] for r in record][0]
 
-        songs = db.final.song_clusters.find({"cluster":int(cluster)}).limit(10)
-        return  {'results': [s["track_name"] for s in songs]}
+        songs = db.final.new_cluster.find({"cluster":int(cluster)}).limit(10)
+        songs=list(songs)
+        return  {'results': [s["track_name"] for s in songs],'urls': [s["track_url"] for s in songs]}
 
 
 if __name__ == "__main__":

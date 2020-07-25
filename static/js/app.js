@@ -48,22 +48,24 @@ pannel.selectAll("*").remove();
 const headerRow = pannel.append("tr");
 let songHeader = headerRow.append("th");
 songHeader.text("Song Name");
-// let clusterHeader = headerRow.append("th");
-// clusterHeader.text("Cluster");
+let linkHeader = headerRow.append("th");
+linkHeader.text("Link");
 // get the songs for the mood
 fetch(`https://spotifymoods.herokuapp.com/similar/${song}`).then(data=>data.json()).then(d=>{
     // loop through the songs
-    d.results.forEach(r=>{
+    console.log(d)
+    d.results.forEach((r,i)=>{
     // create a row for the song
     const row = pannel.append("tr");
     // create a cell for the name
     let songCell = row.append("td");
     // fill in the name
     songCell.text(r);
-    // create a cell for the mood
-    // let clusterCell = row.append("td");
-    // // fill in the mood
-    // clusterCell.text(mood);
+
+    // create a cell for the link
+    let linkCell = row.append("td");
+    // fill in the mood
+    linkCell.text(d.urls[i]);
   });
 })
 }
