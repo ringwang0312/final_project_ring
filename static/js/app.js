@@ -65,7 +65,7 @@ fetch(`https://spotifymoods.herokuapp.com/similar/${song}`).then(data=>data.json
     // create a cell for the link
     let linkCell = row.append("td");
     // fill in the mood
-    linkCell.text(d.urls[i]);
+    linkCell.html(`<a href="${d.urls[i]}">${d.urls[i]}</a>`);
   });
 })
 }
