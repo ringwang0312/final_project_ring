@@ -29,7 +29,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: white;">More<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="https://spotifymoods.herokuapp.com/data">Visualizations</a></li>
-            <li><a href="https://spotifymoods.herokuapp.com/tableau">Tableau</a></li>
+            <li><a href="https://spotifymoods.herokuapp.com/">Homepage</a></li>
           </ul>
          </li>
         </ul>
@@ -66,95 +66,6 @@
                 <!-- <input id="pressSubmit" type="submit" style="color:rgb(20, 87, 43);font-weight: bold;"> -->
               </form>
 
-
-              <!-- <script>
-                function autocomplete(inp, arr) {
-                  var currentFocus;
-                  inp.addEventListener("input", function(e) {
-                      var a, b, i, val = this.value;
-                      closeAllLists();
-                      if (!val) { return false;}
-                      currentFocus = -1;
-                      a = document.createElement("DIV");
-                      a.setAttribute("id", this.id + "autocomplete-list");
-                      a.setAttribute("class", "autocomplete-items");
-                      this.parentNode.appendChild(a);
-                      for (i = 0; i < arr.length; i++) {
-                        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-                          b = document.createElement("DIV");
-                          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
-                          b.innerHTML += arr[i].substr(val.length);
-                          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
-                          b.addEventListener("click", function(e) {
-                              inp.value = this.getElementsByTagName("input")[0].value;
-                              closeAllLists();
-                          });
-                          a.appendChild(b);
-                        }
-                      }
-                  });
-                  inp.addEventListener("keydown", function(e) {
-                      var x = document.getElementById(this.id + "autocomplete-list");
-                      if (x) x = x.getElementsByTagName("div");
-                      if (e.keyCode == 40) {
-                        currentFocus++;
-                        addActive(x);
-                      } else if (e.keyCode == 38) {
-                        currentFocus--;
-                        addActive(x);
-                      } else if (e.keyCode == 13) {
-                        e.preventDefault();
-                        if (currentFocus > -1) {
-                          if (x) x[currentFocus].click();
-                        }
-                      }
-                  });
-                  function addActive(x) {
-                    if (!x) return false;
-                    removeActive(x);
-                    if (currentFocus >= x.length) currentFocus = 0;
-                    if (currentFocus < 0) currentFocus = (x.length - 1);
-                    x[currentFocus].classList.add("autocomplete-active");
-                  }
-                  function removeActive(x) {
-                    for (var i = 0; i < x.length; i++) {
-                      x[i].classList.remove("autocomplete-active");
-                    }
-                  }
-                  function closeAllLists(elmnt) {
-                    var x = document.getElementsByClassName("autocomplete-items");
-                    for (var i = 0; i < x.length; i++) {
-                      if (elmnt != x[i] && elmnt != inp) {
-                        x[i].parentNode.removeChild(x[i]);
-                      }
-                    }
-                  }
-                  document.addEventListener("click", function (e) {
-                      closeAllLists(e.target);
-                      });
-                }
-                  // <TESING 1>
-                    let mood = 0;
-
-                  fetch(`https://spotifymoods.herokuapp.com/searchbox/${mood}/%20`).then(data=>data.json()).then(d=>{
-                      let songs = d.results;
-                      autocomplete(document.getElementById("myInput"), songs);
-                      // console.log(songs);
-                      // console.log(songs.length);
-                  });
-
-                  // <TESING 2>
-                  var e = document.getElementById("exampleFormControlSelect2");
-                  var result = e.options[e.selectedIndex].value;
-
-                  function GetSelectedValue(){
-                  var e = document.getElementById("exampleFormControlSelect2");
-                  var result = e.options[e.selectedIndex].value;
-                  console.log(result);
-                  };
-
-                
-                </script> -->
             </div>
         </div>
 
@@ -171,7 +82,7 @@
                     <th>Cluster</th>
                   </tr>
                  </table>   
-              <!-- <script type='text/javascript' src='https://us-west-2b.online.tableau.com/javascripts/api/viz_v1.js'></script> -->
+              <script type='text/javascript' src='https://us-west-2b.online.tableau.com/javascripts/api/viz_v1.js'></script>
               <div class='tableauPlaceholder' style='width: 1000px; height: 827px;'>
                 <object class='tableauViz' width='1000' height='827' style='display:none;'>
                   <param name='host_url' value='https%3A%2F%2Fus-west-2b.online.tableau.com%2F' /> 

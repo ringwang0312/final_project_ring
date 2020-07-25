@@ -21,13 +21,15 @@ db = client.spotifydata
 # Set route
 @app.route('/')
 def index():
-    # Return the template with the teams list passed in
     return render_template('/index.html')
 
 @app.route('/data')
 def data():
-    # Return the template with the teams list passed in
     return render_template('/data.html')
+
+@app.route('/tableau')
+def data():
+    return render_template('/tableau.html')
 
 # @app.route('/songs/<title>')
 # def songs(title):
