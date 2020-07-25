@@ -129,3 +129,6 @@ input[type=submit] {
   background-color: DodgerBlue !important; 
   color: #ffffff; 
 }}
+.footer {
+  padding: 5rem 0;
+}
